@@ -125,6 +125,33 @@ class LinkedList{
       nodeToDelete = null;   
     }
   }
+
+  //Search an element in the list
+  void SearchElement(int searchValue) {
+    Node temp = new Node();
+    temp = this.head;
+    int found = 0;
+    int i = 0;
+
+    if(temp != null) {
+      while(true) {
+        i++;
+        if(temp.data == searchValue) {
+          found++;
+          break;
+        }
+        temp = temp.next;
+        if(temp == this.head) {break;}
+      }
+      if (found == 1) {
+        System.out.println(searchValue + " is found at index = " + i +".");
+      } else {
+        System.out.println(searchValue + " is not found in the list.");
+      }
+    } else {
+      System.out.println("The list is empty.");
+    }
+  }
  
   //display the content of the list
   void Display() {
