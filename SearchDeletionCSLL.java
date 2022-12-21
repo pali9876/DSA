@@ -10,7 +10,7 @@ class LinkedList{
     head = null;
   }
 
-   //Add new element at the start of the list
+   
   void InsertFirst(int newElement) {
     Node newNode = new Node();
     newNode.data = newElement;
