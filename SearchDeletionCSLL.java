@@ -1,4 +1,4 @@
-class node {
+class Node {
   int data;
   Node next;
 }
@@ -87,6 +87,44 @@ class LinkedList{
       temp.next = newNode;  
     }
   }
+
+  //Delete an element at the given position
+  void Delete(int position) { 
+    Node nodeToDelete = head;
+    Node temp = head;
+    int NoOfElements = 0;
+
+    if(temp != null) {
+      NoOfElements++;
+      temp = temp.next;
+    }
+    while(temp != head) {
+      NoOfElements++;
+      temp = temp.next;
+    }
+
+    if(position < 1 || position > NoOfElements) {
+      System.out.print("\nInvalid position.");
+    } else if (position == 1) {
+
+      if(head.next == head) {
+        head = null;
+      } else {
+        while(temp.next != head)
+          temp = temp.next;
+        head = head.next;
+        temp.next = head; 
+        nodeToDelete = null; 
+      }
+    } else {
+      temp = head;
+      for(int i = 1; i < position-1; i++)
+        temp = temp.next;
+      nodeToDelete = temp.next;
+      temp.next = temp.next.next;
+      nodeToDelete = null;   
+    }
+  }
  
   //display the content of the list
   void Display() {
@@ -108,7 +146,7 @@ class LinkedList{
 };
  
 // test the code
-public class Insertion_CSLL {
+public class SearchDeletionCSLL {
   public static void main(String[] args) {
     LinkedList MyList = new LinkedList();
  
@@ -126,8 +164,15 @@ public class Insertion_CSLL {
     //Insert an element at position 2
     MyList.InsertAt(100, 2);
     MyList.Display();
- 
+
+    //Delete an element at position 2
+    MyList.Delete(2);
     MyList.Display();
+
+    //Delete an element at position 1
+    MyList.Delete(1);
+    MyList.Display();
+ 
   }
 }
 
